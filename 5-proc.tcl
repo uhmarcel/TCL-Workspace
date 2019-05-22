@@ -1,4 +1,5 @@
 # Proc example
+# Recursive fibonacci O(2^n)
 
 proc fibonacci {n} {
 	if {$n == 1} {
@@ -6,14 +7,12 @@ proc fibonacci {n} {
 	} elseif {$n == 2} {
 		return 1
 	} else {
-		set last [fibonacci (expr $n - 1)]
-		set prevLast [fibonacci (expr $n - 2)]
-		return [expr $last + $prevLast]
-	}
+		return [expr [fibonacci [expr $n - 1]] + [fibonacci [expr $n - 2]]]
+ 	}
 }
 
 puts "Fibonacci sequence number: "
 
 gets stdin input
 
-puts "fibonacci($input) = [fibonacci ($input)]";
+puts "fibonacci($input) = [fibonacci $input]";
